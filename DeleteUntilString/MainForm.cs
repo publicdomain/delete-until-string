@@ -10,6 +10,7 @@ namespace DeleteUntilString
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.Reflection;
     using System.Windows.Forms;
 
     /// <summary>
@@ -18,12 +19,23 @@ namespace DeleteUntilString
     public partial class MainForm : Form
     {
         /// <summary>
+        /// The associated icon.
+        /// </summary>
+        private Icon associatedIcon;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:DeleteUntilString.MainForm"/> class.
         /// </summary>
         public MainForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            // Set associated icon from exe file
+            this.associatedIcon = Icon.ExtractAssociatedIcon(typeof(MainForm).GetTypeInfo().Assembly.Location);
+
+            // Set public domain daily tool strip menu item image
+            this.dailyReleasesPublicDomainDailycomToolStripMenuItem.Image = this.associatedIcon.ToBitmap();
         }
 
         /// <summary>
