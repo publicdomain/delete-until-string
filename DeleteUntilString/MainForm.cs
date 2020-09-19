@@ -8,6 +8,7 @@ namespace DeleteUntilString
     // Directives
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -32,7 +33,8 @@ namespace DeleteUntilString
         /// <param name="e">Event arguments.</param>
         private void OnDailyReleasesPublicDomainDailycomToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Open current website
+            Process.Start("https://publicdomaindaily.com");
         }
 
         /// <summary>
