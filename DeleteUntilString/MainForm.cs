@@ -10,6 +10,7 @@ namespace DeleteUntilString
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
@@ -133,7 +134,23 @@ namespace DeleteUntilString
         /// <param name="e">Event arguments.</param>
         private void OnDirectoryButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show open file dialog
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Collect file path list
+                    List<string> filePathList = Directory.GetFiles(this.folderBrowserDialog.SelectedPath, this.searchPatternTextBox.Text, SearchOption.AllDirectories).ToList();
+
+                    // Process files
+                    this.ProcessFiles(filePathList, this.textStringTextBox.Text);
+                }
+                catch (Exception exception)
+                {
+                    // Inform user
+                    MessageBox.Show($"Error when processing file{(this.openFileDialog.FileNames.Length > 1 ? "s" : string.Empty)}.{Environment.NewLine}Message: {exception.Message}", "File error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         /// <summary>
