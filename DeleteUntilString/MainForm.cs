@@ -10,6 +10,7 @@ namespace DeleteUntilString
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
 
@@ -109,7 +110,20 @@ namespace DeleteUntilString
         /// <param name="e">Event arguments.</param>
         private void OnFileButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Process files
+                    this.ProcessFiles(this.openFileDialog.FileNames.ToList(), this.textStringTextBox.Text);
+                }
+                catch (Exception exception)
+                {
+                    // Inform user
+                    MessageBox.Show($"Error when processing file{(this.openFileDialog.FileNames.Length > 1 ? "s" : string.Empty)}.{Environment.NewLine}Message: {exception.Message}", "File error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         /// <summary>
@@ -118,6 +132,16 @@ namespace DeleteUntilString
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnDirectoryButtonClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Processes the files.
+        /// </summary>
+        /// <param name="filePathList">File path list.</param>
+        /// <param name="textString">Text string.</param>
+        private void ProcessFiles(List<string> filePathList, string textString)
         {
             // TODO Add code
         }
