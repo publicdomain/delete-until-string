@@ -26,6 +26,11 @@ namespace DeleteUntilString
         private Icon associatedIcon;
 
         /// <summary>
+        /// The processed files.
+        /// </summary>
+        private int processedFiles = 0;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:DeleteUntilString.MainForm"/> class.
         /// </summary>
         public MainForm()
@@ -160,7 +165,28 @@ namespace DeleteUntilString
         /// <param name="textString">Text string.</param>
         private void ProcessFiles(List<string> filePathList, string textString)
         {
-            // TODO Add code
+            // Iterate files
+            foreach (var filePath in filePathList)
+            {
+                // Read file to string
+                string fileContents = File.ReadAllText(filePath);
+
+                // Set text string position
+                int textStringPosition = fileContents.IndexOf(textString, StringComparison.InvariantCulture);
+
+                // Check there is something to work with
+                if (textStringPosition > -1)
+                {
+                    // Delete until string
+                    fileContents = fileContents.Substring(textStringPosition);
+
+                    // Write new contents to disk
+                    File.WriteAllText(filePath, fileContents);
+
+                    // Raise processed file counter
+                    this.processedFiles++;
+                }
+            }
         }
     }
 }
