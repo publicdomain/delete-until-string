@@ -50,8 +50,8 @@ namespace DeleteUntilString
         	this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
         	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-        	this.mainToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-        	this.fileCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+        	this.matchedFileToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+        	this.matchedfileCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
         	this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
         	this.textStringLabel = new System.Windows.Forms.Label();
         	this.textStringTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +63,8 @@ namespace DeleteUntilString
         	this.subdirectoriesCheckBox = new System.Windows.Forms.CheckBox();
         	this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
         	this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+        	this.processedFileToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+        	this.processedFileCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainStatusStrip.SuspendLayout();
         	this.mainTableLayoutPanel.SuspendLayout();
@@ -168,26 +170,28 @@ namespace DeleteUntilString
         	// mainStatusStrip
         	// 
         	this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.mainToolStripStatusLabel,
-        	        	        	this.fileCountToolStripStatusLabel});
+        	        	        	this.matchedFileToolStripStatusLabel,
+        	        	        	this.matchedfileCountToolStripStatusLabel,
+        	        	        	this.processedFileToolStripStatusLabel,
+        	        	        	this.processedFileCountToolStripStatusLabel});
         	this.mainStatusStrip.Location = new System.Drawing.Point(0, 153);
         	this.mainStatusStrip.Name = "mainStatusStrip";
         	this.mainStatusStrip.Size = new System.Drawing.Size(249, 22);
         	this.mainStatusStrip.SizingGrip = false;
         	this.mainStatusStrip.TabIndex = 20;
         	// 
-        	// mainToolStripStatusLabel
+        	// matchedFileToolStripStatusLabel
         	// 
-        	this.mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
-        	this.mainToolStripStatusLabel.Size = new System.Drawing.Size(139, 17);
-        	this.mainToolStripStatusLabel.Text = "Number of targeted files:";
+        	this.matchedFileToolStripStatusLabel.Name = "matchedFileToolStripStatusLabel";
+        	this.matchedFileToolStripStatusLabel.Size = new System.Drawing.Size(81, 17);
+        	this.matchedFileToolStripStatusLabel.Text = "Matched files:";
         	// 
-        	// fileCountToolStripStatusLabel
+        	// matchedfileCountToolStripStatusLabel
         	// 
-        	this.fileCountToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.fileCountToolStripStatusLabel.Name = "fileCountToolStripStatusLabel";
-        	this.fileCountToolStripStatusLabel.Size = new System.Drawing.Size(14, 17);
-        	this.fileCountToolStripStatusLabel.Text = "0";
+        	this.matchedfileCountToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.matchedfileCountToolStripStatusLabel.Name = "matchedfileCountToolStripStatusLabel";
+        	this.matchedfileCountToolStripStatusLabel.Size = new System.Drawing.Size(14, 17);
+        	this.matchedfileCountToolStripStatusLabel.Text = "0";
         	// 
         	// mainTableLayoutPanel
         	// 
@@ -305,6 +309,19 @@ namespace DeleteUntilString
         	this.openFileDialog.Multiselect = true;
         	this.openFileDialog.Title = "Open file(s)";
         	// 
+        	// processedFileToolStripStatusLabel
+        	// 
+        	this.processedFileToolStripStatusLabel.Name = "processedFileToolStripStatusLabel";
+        	this.processedFileToolStripStatusLabel.Size = new System.Drawing.Size(87, 17);
+        	this.processedFileToolStripStatusLabel.Text = "Processed files:";
+        	// 
+        	// processedFileCountToolStripStatusLabel
+        	// 
+        	this.processedFileCountToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+        	this.processedFileCountToolStripStatusLabel.Name = "processedFileCountToolStripStatusLabel";
+        	this.processedFileCountToolStripStatusLabel.Size = new System.Drawing.Size(14, 17);
+        	this.processedFileCountToolStripStatusLabel.Text = "0";
+        	// 
         	// MainForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,6 +343,8 @@ namespace DeleteUntilString
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripStatusLabel processedFileCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel processedFileToolStripStatusLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.CheckBox subdirectoriesCheckBox;
@@ -339,8 +358,8 @@ namespace DeleteUntilString
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel fileCountToolStripStatusLabel;
-        private System.Windows.Forms.ToolStripStatusLabel mainToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel matchedfileCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel matchedFileToolStripStatusLabel;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

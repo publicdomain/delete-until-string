@@ -26,11 +26,6 @@ namespace DeleteUntilString
         private Icon associatedIcon;
 
         /// <summary>
-        /// The processed files.
-        /// </summary>
-        private int processedFiles = 0;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="T:DeleteUntilString.MainForm"/> class.
         /// </summary>
         public MainForm()
@@ -165,6 +160,21 @@ namespace DeleteUntilString
         /// <param name="textString">Text string.</param>
         private void ProcessFiles(List<string> filePathList, string textString)
         {
+            // TODO Some checks can be done before collecting file path list, yet it would be per separate button
+
+            // Check there is a text string
+            if (textString.Length == 0)
+            {
+                // Advise user
+                MessageBox.Show("A text string is required!", "Input", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Halt flow
+                return;
+            }
+
+            // Declare processed file count
+            int processedFileCount = 0;
+
             // Iterate files
             foreach (var filePath in filePathList)
             {
@@ -183,10 +193,17 @@ namespace DeleteUntilString
                     // Write new contents to disk
                     File.WriteAllText(filePath, fileContents);
 
-                    // Raise processed file counter
-                    this.processedFiles++;
+                    // Increase processed file count
+                    processedFileCount++;
                 }
             }
+
+            // Set labels
+            this.matchedfileCountToolStripStatusLabel.Text = filePathList.Count.ToString();
+            this.processedFileCountToolStripStatusLabel.Text = processedFileCount.ToString();
+
+            // Inform user
+            MessageBox.Show($"Matched files: {filePathList.Count}{Environment.NewLine}{Environment.NewLine}Processed files: {processedFileCount}", "Results");
         }
     }
 }
