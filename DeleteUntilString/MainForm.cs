@@ -131,7 +131,22 @@ namespace DeleteUntilString
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Clear text string
+            this.textStringTextBox.Clear();
+
+            // Reset counters
+            this.matchedfileCountToolStripStatusLabel.Text = "0";
+            this.processedFileCountToolStripStatusLabel.Text = "0";
+
+            // Reset search pattern
+            this.searchPatternTextBox.Text = "*.txt";
+
+            // Reset check boxes
+            this.backupCheckBox.Checked = true;
+            this.subdirectoriesCheckBox.Checked = true;
+
+            // Focus text string field
+            this.textStringTextBox.Focus();
         }
 
         /// <summary>
