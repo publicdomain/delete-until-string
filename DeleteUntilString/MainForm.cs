@@ -249,8 +249,20 @@ namespace DeleteUntilString
                     // Check if must backup
                     if (this.backupCheckBox.Checked)
                     {
+                        // Set backup file path
+                        string backupFilePath = Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}-backup{Path.GetExtension(filePath)}")
+;
+                        /* TODO Multiple backup support [Can be by DateTime] */
+
+                        // Repeat until new backup name is clear
+                        while (File.Exists(backupFilePath))
+                        {
+                            // Append "-backup"
+                            backupFilePath = Path.Combine(Path.GetDirectoryName(backupFilePath), $"{Path.GetFileNameWithoutExtension(backupFilePath)}-backup{Path.GetExtension(backupFilePath)}");
+                        }
+
                         // Create backup file
-                        File.Copy(filePath, Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}-backup{Path.GetExtension(filePath)}"));
+                        File.Copy(filePath, backupFilePath);
                     }
 
                     // Write new contents to disk
