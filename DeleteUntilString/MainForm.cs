@@ -111,7 +111,7 @@ namespace DeleteUntilString
             var aboutForm = new AboutForm(
                 $"About {programTitle}",
                 $"{programTitle} {version.Major}.{version.Minor}.{version.Build}",
-                $"Made for: nkormanik{Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #267, Week #39 @ September 2020",
+                $"Made for: nkormanik{Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #271, Week #39 @ September 27, 2020",
                 licenseText,
                 this.Icon.ToBitmap())
             {
@@ -245,6 +245,13 @@ namespace DeleteUntilString
                 {
                     // Delete until string
                     fileContents = fileContents.Substring(textStringPosition);
+
+                    // Check if must backup
+                    if (this.backupCheckBox.Checked)
+                    {
+                        // Create backup file
+                        File.Copy(filePath, Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}-backup{Path.GetExtension(filePath)}"));
+                    }
 
                     // Write new contents to disk
                     File.WriteAllText(filePath, fileContents);
