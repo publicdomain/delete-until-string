@@ -12,6 +12,7 @@ Usage video:
 [![Video](http://img.youtube.com/vi/4st-GSqoOkY/0.jpg)](http://www.youtube.com/watch?v=4st-GSqoOkY "Usage video")
 
 v0.2.0 notes:
+
 - Multiple files.
 - Supports directory.
 - File filter.
